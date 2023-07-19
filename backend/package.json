@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Food Management system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rupam0106/Food-Management.git"
+  },
+  "keywords": [
+    "MEAN"
+  ],
+  "author": "Rupam Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rupam0106/Food-Management/issues"
+  },
+  "homepage": "https://github.com/Rupam0106/Food-Management#readme"
+}
