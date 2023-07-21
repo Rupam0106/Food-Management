@@ -1,13 +1,13 @@
 import { Router } from "express";
 import {
-  getSeed,
+  createUser,
   loginUser,
   registerUser,
 } from "../controllers/user.controller";
 
 const router = Router();
 
-router.route("/seed").get(getSeed);
+router.route("/register").post(createUser);
 
 router.route("/login").post(loginUser);
 

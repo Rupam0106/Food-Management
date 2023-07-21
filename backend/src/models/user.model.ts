@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose';
+import {Schema, model,ObjectId} from 'mongoose';
 
 export interface User{
     id:string;
@@ -14,7 +14,7 @@ export const UserSchema = new Schema<User>({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     address: {type: String, required: true},
-    isAdmin: {type: Boolean, required: true},
+    isAdmin: {type: Boolean, required: true,default:false},
 }, {
     timestamps: true,
     toJSON:{

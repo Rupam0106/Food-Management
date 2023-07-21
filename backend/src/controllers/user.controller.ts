@@ -1,25 +1,31 @@
 import bcrypt from "bcryptjs";
 import asyncHandler from "express-async-handler";
-import { sample_users } from "../data";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import { User, UserModel } from "../models/user.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 
-export const getSeed = asyncHandler(async (req, res) => {
+export const createUser = asyncHandler(async (req, res) => {
   const usersCount = await UserModel.countDocuments();
-  if (usersCount > 0) {
-    res.send("Seed is already done!");
-    return;
-  }
+  const { name, email, password, address, isAdmin } = req.body;
 
-  await UserModel.create(sample_users);
-  res.send("Seed Is Done!");
+  const user = await UserModel.create({
+    name,
+    email,
+    password,
+    address,
+    isAdmin,
+  });
+
+  res.status(201).json({
+    success: true,
+    user,
+  });
 });
 
 export const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await UserModel.findOne({ email });
-
+console.log(user)
   if (user && (await bcrypt.compare(password, user.password))) {
     res.send(generateTokenReponse(user));
   } else {

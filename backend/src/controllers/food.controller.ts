@@ -1,8 +1,10 @@
 import asyncHandler from "express-async-handler";
 import { FoodModel } from "../models/food.model";
+// import { uploadFile } from "../Aws/aws";
 
 export const createFood = asyncHandler(async (req, res, next) => {
   let imageUrl = "default";
+  // let profileImage = await uploadFile(files[0]);
   const { name, cookTime, price, favorite, origins, stars, tags } = req.body;
 
   const food = await FoodModel.create({
